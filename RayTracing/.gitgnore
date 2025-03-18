@@ -1,0 +1,13 @@
+../Led/
+	../OpenMS/
+	../PBWebsite/
+	./
+	../a.out
+	../basics.cpp
+	../blink/
+	../c++json/
+	../cmsis/
+	../jmzqc/
+	../pymzqc/
+	../tmp/
+
