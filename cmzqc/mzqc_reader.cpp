@@ -90,7 +90,7 @@ int main(int argc, char* argv[]) {
     
     try {
         // Load the mzQC file with schema validation
-        auto mzqcFile = mzqc::MzQcFile::fromFile(filePath, schemaPath);
+        auto mzqcFile = mzqc::MzQCFile::fromFile(filePath, schemaPath);
         
         // Display basic file info
         std::cout << "\n===== mzQC File Info =====" << std::endl;

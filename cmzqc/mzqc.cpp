@@ -384,7 +384,7 @@ void SetQuality::fromJson(const nlohmann::json& j) {
 }
 
 // MzQcFile implementation
-MzQcFile::MzQcFile(const std::string& creationDate,
+MzQCFile::MzQCFile(const std::string& creationDate,
                    const std::string& version,
                    const std::string& contactName,
                    const std::string& contactAddress,
@@ -399,7 +399,7 @@ MzQcFile::MzQcFile(const std::string& creationDate,
       runQualities(runQualities),
       setQualities(setQualities) {}
 
-std::string MzQcFile::getCurrentIsoTime() {
+std::string MzQCFile::getCurrentIsoTime() {
     auto now = std::chrono::system_clock::now();
     auto time = std::chrono::system_clock::to_time_t(now);
     std::stringstream ss;
@@ -407,7 +407,7 @@ std::string MzQcFile::getCurrentIsoTime() {
     return ss.str();
 }
 
-nlohmann::json MzQcFile::toJson() const {
+nlohmann::json MzQCFile::toJson() const {
     nlohmann::json j;
     j["mzQC"] = {
         {"version", version},
@@ -442,7 +442,7 @@ nlohmann::json MzQcFile::toJson() const {
     return j;
 }
 
-void MzQcFile::fromJson(const nlohmann::json& j) {
+void MzQCFile::fromJson(const nlohmann::json& j) {
     // Check if the root object is "mzQC" or if we're already inside it
     const auto& mzqc = j.contains("mzQC") ? j["mzQC"] : j;
     
@@ -450,12 +450,10 @@ void MzQcFile::fromJson(const nlohmann::json& j) {
     if (mzqc.contains("creationDate")) {
         creationDate = mzqc["creationDate"].get<std::string>();
     } else {
-        creationDate = getCurrentIsoT
+        creationDate = getCurrentIsoTime();
 
-## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
-ime();
+
     }
     
     version = mzqc.value("version", "");
@@ -494,13 +492,13 @@ ime();
     }
 }
 
-std::shared_ptr<MzQcFile> MzQcFile::fromJsonStatic(const nlohmann::json& j) {
-    auto file = std::make_shared<MzQcFile>();
+std::shared_ptr<MzQCFile> MzQCFile::fromJsonStatic(const nlohmann::json& j) {
+    auto file = std::make_shared<MzQCFile>();
     file->fromJson(j);
     return file;
 }
 
-std::shared_ptr<MzQcFile> MzQcFile::fromFile(const std::string& filepath, const std::string& schemaPath) {
+std::shared_ptr<MzQCFile> MzQCFile::fromFile(const std::string& filepath, const std::string& schemaPath) {
     std::ifstream file(filepath);
     if (!file.is_open()) {
         throw std::runtime_error("Could not open file: " + filepath);
@@ -523,7 +521,7 @@ std::shared_ptr<MzQcFile> MzQcFile::fromFile(const std::string& filepath, const 
     return fromJsonStatic(j);
 }
 
-void MzQcFile::toFile(const std::string& filepath, const std::string& schemaPath) const {
+void MzQCFile::toFile(const std::string& filepath, const std::string& schemaPath) const {
     nlohmann::json j = toJson();
     
     // Validate against schema if schema path is provided

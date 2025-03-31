@@ -92,7 +92,7 @@ int main() {
     std::vector<std::shared_ptr<RunQuality>> run_qualities = {run_quality};
     std::vector<std::shared_ptr<SetQuality>> set_qualities;
 
-    MzQcFile mzqc_file("", "1.0.0", "Contact Name", "Contact Address", "Description", run_qualities, set_qualities);
+    MzQCFile mzqc_file("", "1.0.0", "Contact Name", "Contact Address", "Description", run_qualities, set_qualities);
     
     // Add controlled vocabularies to the file
     mzqc_file.controlledVocabularies = {cv1, cv2};

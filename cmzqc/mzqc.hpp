@@ -184,10 +184,10 @@ public:
     void fromJson(const nlohmann::json& j) override;
 };
 
-// From PDF: MzQcFile class
-class MzQcFile : public JsonSerializable {
+// From PDF: MzQCFile class
+class MzQCFile : public JsonSerializable {
 public:
-    MzQcFile(const std::string& creationDate = "",
+    MzQCFile(const std::string& creationDate = "",
              const std::string& version = "1.0.0",
              const std::string& contactName = "",
              const std::string& contactAddress = "",
@@ -206,8 +206,8 @@ public:
 
     nlohmann::json toJson() const override;
     void fromJson(const nlohmann::json& j) override;
-    static std::shared_ptr<MzQcFile> fromJsonStatic(const nlohmann::json& j);
-    static std::shared_ptr<MzQcFile> fromFile(const std::string& filepath, const std::string& schemaPath = "");
+    static std::shared_ptr<MzQCFile> fromJsonStatic(const nlohmann::json& j);
+    static std::shared_ptr<MzQCFile> fromFile(const std::string& filepath, const std::string& schemaPath = "");
     void toFile(const std::string& filepath, const std::string& schemaPath = "") const;
 
     static std::string getCurrentIsoTime();
