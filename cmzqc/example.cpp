@@ -48,9 +48,9 @@ int main() {
 
     // Create input file
     auto inputFile = std::make_shared<InputFile>(
-        "file:///path/to/input.mzML", 
-        "input.mzML",
-        std::make_shared<CvParameter>("MS:1000584", "mzML file", "", "PSI-MS")
+        "file:///path/to/input.csv",
+        "input.csv",
+        std::make_shared<CvParameter>("MS:1000584", "csv file", "", "PSI-MS")
     );
     
     // Create analysis software
