@@ -2,7 +2,15 @@
 
 A C++ library for reading, writing, and manipulating mzQC files for mass spectrometry quality control data. This library implements the PSI mzQC standard for representing quality control metrics for mass spectrometry experiments.
 
+## 📋 Table of Contents
 
+- [Overview](#overview)
+- [Features](#features)
+- [Docker Setup](#docker-setup)
+- [Library Usage](#library-usage)
+- [API Documentation](#api-documentation)
+- [Building Manually](#building-manually)
+- [Examples](#examples)
 
 
 ## 🔍 Overview
