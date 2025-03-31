@@ -16,16 +16,16 @@ if(NOT nlohmann_json_FOUND)
 endif()
 
 # Add schema file to resources
-configure_file(${CMAKE_SOURCE_DIR}/mzqc_schema.json ${CMAKE_BINARY_DIR}/mzqc_schema.json COPYONLY)
+configure_file(${CMAKE_SOURCE_DIR}/schema/mzqc_schema.json ${CMAKE_BINARY_DIR}/mzqc_schema.json COPYONLY)
 
 # Add the mzqc_reader executable
-add_executable(mzqc_reader mzqc_reader.cpp mzqc.cpp)
+add_executable(mzqc_reader test/mzqc_reader.cpp src/mzqc.cpp)
 target_link_libraries(mzqc_reader PRIVATE nlohmann_json::nlohmann_json)
 
 # Add the example executable
-add_executable(example example.cpp mzqc.cpp)
+add_executable(example test/example.cpp src/mzqc.cpp)
 target_link_libraries(example PRIVATE nlohmann_json::nlohmann_json)
 
 # Installation
 install(TARGETS mzqc_reader DESTINATION bin)
-install(FILES ${CMAKE_SOURCE_DIR}/mzqc_schema.json DESTINATION bin)
+install(FILES ${CMAKE_SOURCE_DIR}/schema/mzqc_schema.json DESTINATION bin)

@@ -29,11 +29,11 @@ WORKDIR /app/build
 RUN cmake .. && make
 
 # Add schema to the build directory if not already copied
-RUN if [ ! -f mzqc_schema.json ]; then cp ../mzqc_schema.json .; fi
+RUN if [ ! -f mzqc_schema.json ]; then cp ../schema/mzqc_schema.json .; fi
 
 # Copy the CSV file to make the example work
-RUN if [ -f ../CPTAC_CompRef_00_iTRAQ_01_2Feb12_Cougar_11-10-09_ids.csv ]; then \
-    cp ../CPTAC_CompRef_00_iTRAQ_01_2Feb12_Cougar_11-10-09_ids.csv .; \
+RUN if [ ! -f CPTAC_CompRef_00_iTRAQ_01_2Feb12_Cougar_11-10-09_ids.csv ]; then \
+    cp ../input_files/CPTAC_CompRef_00_iTRAQ_01_2Feb12_Cougar_11-10-09_ids.csv .; \
     fi
 
 # Command to run the example by default
