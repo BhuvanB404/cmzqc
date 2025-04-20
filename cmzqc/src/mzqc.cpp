@@ -511,7 +511,7 @@ std::shared_ptr<MzQCFile> MzQCFile::fromFile(const std::string& filepath, const 
         throw std::runtime_error("Error parsing JSON from file: " + std::string(e.what()));
     }
     
-    // Validate against schema if schema path is provided
+ 
     if (!schemaPath.empty()) {
         if (!validateAgainstSchema(j, schemaPath)) {
             throw std::runtime_error("File does not conform to mzQC schema");
@@ -524,7 +524,7 @@ std::shared_ptr<MzQCFile> MzQCFile::fromFile(const std::string& filepath, const 
 void MzQCFile::toFile(const std::string& filepath, const std::string& schemaPath) const {
     nlohmann::json j = toJson();
     
-    // Validate against schema if schema path is provided
+
     if (!schemaPath.empty()) {
         if (!validateAgainstSchema(j, schemaPath)) {
             throw std::runtime_error("Generated mzQC does not conform to schema");
@@ -539,4 +539,4 @@ void MzQCFile::toFile(const std::string& filepath, const std::string& schemaPath
     file << j.dump(2);
 }
 
-} // namespace mzqc 
+} 
